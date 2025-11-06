@@ -1,0 +1,179 @@
+/* src/App.css */
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1. O FUNDO ANIMADO */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  /* O gradiente mágico */
+  background: linear-gradient(-45deg, #480d48, #9d4edd, #ff409f, #c71585);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Animação que move o gradiente */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2. O CARD PRINCIPAL */
+.App {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.95); /* Leve transparência */
+  padding: 40px;
+  border-radius: 15px;
+  /* Sombra mais forte para destacar do fundo */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  /* Efeito de "vidro fosco" para navegadores que suportam */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.App-header {
+  margin-bottom: 30px;
+}
+
+/* 3. TIPOGRAFIA */
+h1 {
+  font-size: 2.5em;
+  color: #480d48; /* Roxo bem escuro */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* 4. FORMULÁRIO */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #9d4edd; /* Borda ROXA ao focar */
+  box-shadow: 0 0 10px rgba(157, 78, 221, 0.4); /* Sombra ROXA ao focar */
+}
+
+button[type="submit"] {
+  /* Gradiente no botão */
+  background-image: linear-gradient(to right, #9d4edd 0%, #ff409f 100%);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  /* Efeito de zoom e sombra mais forte */
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:disabled {
+  background-image: none;
+  background-color: #ab92bf; /* Roxo desaturado */
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* 5. ÁREA DE RESULTADO */
+.resultado {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 5px solid;
+  text-align: left;
+}
+
+.resultado h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mensagem de SUCESSO (Rosa) */
+.resultado.message-success {
+  background-color: #fff0f7;
+  border-color: #ff409f; /* Rosa vibrante */
+  color: #c71585; /* Rosa escuro */
+}
+.resultado.message-success h3:before {
+  content: '🎉'; /* Um emoji mais festivo */
+}
+.resultado.message-success ul li::before {
+  /* (Não deve aparecer, mas por via das dúvidas) */
+  color: #ff409f;
+}
+
+
+/* Mensagem de ERRO (Roxo/Magenta) */
+.resultado.message-error {
+  background-color: #fce9ff;
+  border-color: #c71585; /* Magenta */
+  color: #a10056; /* Magenta bem escuro */
+}
+.resultado.message-error h3:before {
+  content: '❌';
+}
+.resultado.message-error ul li::before {
+  content: '•';
+  color: #c71585; /* Cor do marcador de erro */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+
+.resultado ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.resultado ul li {
+  margin-bottom: 8px;
+  font-size: 1em;
+  color: #555;
+  padding-left: 20px;
+  position: relative;
+}
